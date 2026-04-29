@@ -43,6 +43,10 @@ jobs:
       - name: Run Unit Test
         run: ./gradlew test
 
+      # build
+      - name: Build APK
+        run: ./gradlew assembleDevDebug
+
       # upload firebase
       - name: Upload Firebase
         if: |
@@ -54,12 +58,12 @@ jobs:
           )
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: ./gradlew assembleDevDebug appDistributionUploadDevDebug
+        run: ./gradlew appDistributionUploadDevDebug
 
       - name: Upload Test Report
         if: always()
         uses: actions/upload-artifact@v4
         with:
-         name: test-report
-         path: app/build/reports/tests/testDebugUnitTest/
+          name: test-report
+          path: app/build/reports/tests/testDebugUnitTest/
 
