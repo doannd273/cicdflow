@@ -10,6 +10,7 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  VERSION_NAME: ${{ github.ref_name }}-${{ github.run_number }}
 
 jobs:
   build:
@@ -53,4 +54,11 @@ jobs:
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: ./gradlew assembleDevDebug appDistributionUploadDevDebug
+
+      - name: Upload Test Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+         name: test-report
+         path: app/build/reports/tests/testDebugUnitTest/
 
