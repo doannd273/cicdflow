@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ktlint)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.appdistribution)
 }
 
 android {
@@ -61,6 +63,12 @@ android {
     }
 }
 
+firebaseAppDistribution {
+    appId = "1:678894800789:android:92c1f9be92e649dd80b09c"
+    testers = "nguyendinhdoanjdk@gmail.com"
+    releaseNotes = "Build test lần 1"
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -78,4 +86,5 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+    implementation(platform(libs.firebase.bom))
 }

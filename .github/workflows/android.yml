@@ -23,12 +23,15 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+          cache: gradle
 
       - name: Grant permission
         run: chmod +x gradlew
 
-      - name: Build APK
-        run: ./gradlew assembleDebug
+      - name: Build + Upload Firebase
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        run: ./gradlew assembleDevDebug appDistributionUploadDevDebug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
