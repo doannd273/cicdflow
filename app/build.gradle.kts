@@ -70,8 +70,6 @@ firebaseAppDistribution {
     releaseNotes = "Build test lần 1"
 }
 
-
-
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
