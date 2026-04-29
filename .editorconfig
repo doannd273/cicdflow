@@ -1,0 +1,14 @@
+
+[*.{kt,kts}]
+indent_size = 4
+indent_style = space
+
+# Quan trọng nhất cho import order (khớp ktlint)
+ij_kotlin_imports_layout=*,java.**,javax.**,kotlin.**,^
+
+# Không dùng wildcard import
+ij_kotlin_name_count_to_use_star_import = 999
+ij_kotlin_name_count_to_use_star_import_for_members = 999
+
+# (tuỳ chọn) giữ newline cuối file
+insert_final_newline = true
