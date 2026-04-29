@@ -13,6 +13,7 @@ ktlint = "11.6.0"
 firebase-bom = "32.7.0"
 google-services = "4.4.1"
 firebase-appdistribution = "4.0.0"
+detekt = "1.23.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,4 +40,5 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 firebase-appdistribution = { id = "com.google.firebase.appdistribution", version.ref = "firebase-appdistribution" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 

@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.google.services)
     alias(libs.plugins.firebase.appdistribution)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -68,6 +69,8 @@ firebaseAppDistribution {
     testers = "nguyendinhdoanjdk@gmail.com"
     releaseNotes = "Build test lần 1"
 }
+
+
 
 dependencies {
     implementation(libs.androidx.core.ktx)

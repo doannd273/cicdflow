@@ -34,13 +34,13 @@ jobs:
       - name: Run ktlint
         run: ./gradlew ktlintCheck
 
+      # detekt
+      - name: Run Detekt
+        run: ./gradlew detekt
+
       # test
       - name: Run Unit Test
         run: ./gradlew test
-
-      # luôn build để check
-      - name: Build Dev Debug
-        run: ./gradlew assembleDevDebug
 
       # upload firebase
       - name: Upload Firebase
@@ -52,5 +52,5 @@ jobs:
           )
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: ./gradlew appDistributionUploadDevDebug
+        run: ./gradlew assembleDevDebug appDistributionUploadDevDebug
 
