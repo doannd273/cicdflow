@@ -4,8 +4,8 @@ on:
   pull_request:
   push:
     branches:
-      - main
       - develop
+      - 'qc/**'
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -25,17 +25,34 @@ jobs:
           java-version: '17'
           cache: gradle
 
+      # setup gradle
       - name: Grant permission
         run: chmod +x gradlew
 
-      - name: Build + Upload Firebase
+      # lint
+      - name: Run ktlint
+        run: ./gradlew ktlintCheck
+
+      - name: Run detekt
+        run: ./gradlew detekt
+
+      # test
+      - name: Run Unit Test
+        run: ./gradlew test
+
+      # luôn build để check
+      - name: Build Dev Debug
+        run: ./gradlew assembleDevDebug
+
+      # upload firebase
+      - name: Upload Firebase
+        if: |
+          github.event_name == 'push' && 
+          (
+          startsWith(github.ref, 'refs/heads/qc/') ||
+          github.ref == 'refs/heads/develop'
+          )
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-        run: ./gradlew assembleDevDebug appDistributionUploadDevDebug
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-debug
-          path: app/build/outputs/apk/**/*.apk
+        run: ./gradlew appDistributionUploadDevDebug
 

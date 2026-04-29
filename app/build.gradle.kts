@@ -17,8 +17,8 @@ android {
         applicationId = "com.example.cicdflow"
         minSdk = 24
         targetSdk = 36
-        versionCode = System.getenv("VERSION_CODE")?.toInt() ?: 1
-        versionName = System.getenv("VERSION_NAME") ?: "1.0"
+        versionCode = 2
+        versionName = "2.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
