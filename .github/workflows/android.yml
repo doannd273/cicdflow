@@ -2,11 +2,11 @@ name: Android learning CI/CD
 
 on:
   push:
+    # Test branch
     branches:
       - main
       - develop
       - 'qc/**'
-
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
