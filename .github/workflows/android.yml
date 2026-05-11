@@ -2,6 +2,7 @@ name: Android learning CI/CD
 
 on:
   push:
+    #test
     branches:
       - main
       - develop
