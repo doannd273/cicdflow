@@ -22,7 +22,7 @@ jobs:
           cache: gradle
 
       - name: Gant gradle permission
-        uses: chmod + x gradlew
+        run: chmod + x gradlew
 
       - name: Run ktLin
         run: .gradlew ktlintCheck
