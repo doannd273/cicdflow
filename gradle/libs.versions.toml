@@ -13,6 +13,7 @@ ktlint = "11.6.0"
 firebase-bom = "32.7.0"
 google-services = "4.4.1"
 firebase-appdistribution = "4.0.0"
+firebase-crashlytics-gradle = "3.0.7"
 detekt = "1.23.6"
 
 [libraries]
@@ -32,6 +33,7 @@ androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-te
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -40,5 +42,5 @@ kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "ko
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
 google-services = { id = "com.google.gms.google-services", version.ref = "google-services" }
 firebase-appdistribution = { id = "com.google.firebase.appdistribution", version.ref = "firebase-appdistribution" }
+firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics-gradle" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-

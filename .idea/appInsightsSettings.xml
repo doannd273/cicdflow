@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.example.cicdflow" />
-                  <option name="mobileSdkAppId" value="1:678894800789:android:92c1f9be92e649dd80b09c" />
-                  <option name="projectId" value="cicdflow-ae234" />
-                  <option name="projectNumber" value="678894800789" />
+                  <option name="appId" value="com.example.cicdflow.debug" />
+                  <option name="mobileSdkAppId" value="1:938371255725:android:c6853c25f267d9476fa524" />
+                  <option name="projectId" value="cicdflow-dev" />
+                  <option name="projectNumber" value="938371255725" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

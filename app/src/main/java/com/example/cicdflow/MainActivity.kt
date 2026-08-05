@@ -17,5 +17,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         viewModel.loadTasks()
+
+        throw RuntimeException("Test Crash")
     }
 }

@@ -1,3 +1,14 @@
+import com.google.firebase.crashlytics.buildtools.gradle.CrashlyticsExtension
+import java.util.Properties
+
+val localProperties =
+    Properties().apply {
+        val localPropertiesFile = rootProject.file("local.properties")
+        if (localPropertiesFile.exists()) {
+            localPropertiesFile.inputStream().use(::load)
+        }
+    }
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -5,7 +16,18 @@ plugins {
     alias(libs.plugins.ktlint)
     alias(libs.plugins.google.services)
     alias(libs.plugins.firebase.appdistribution)
+    alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.detekt)
+}
+
+androidComponents {
+    beforeVariants(
+        selector()
+            .withFlavor("env" to "dev")
+            .withBuildType("release")
+    ) { variantBuilder ->
+        variantBuilder.enable = false
+    }
 }
 
 android {
@@ -24,16 +46,50 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        create("release") {
+            storeFile = localProperties.getProperty("RELEASE_STORE_FILE")?.let(rootProject::file)
+            storePassword = localProperties.getProperty("RELEASE_STORE_PASSWORD")
+            keyAlias = localProperties.getProperty("RELEASE_KEY_ALIAS")
+            keyPassword = localProperties.getProperty("RELEASE_KEY_PASSWORD")
+        }
+    }
+
     buildTypes {
         debug {
+            applicationIdSuffix = ".debug"
+            versionNameSuffix = "-debug"
+
             isMinifyEnabled = false
             isDebuggable = true
+
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "cicdflow-debug"
+            )
+
+            configure<CrashlyticsExtension> {
+                mappingFileUploadEnabled = false
+            }
         }
 
         release {
             isShrinkResources = true
             isDebuggable = false
             isMinifyEnabled = true
+            signingConfig = signingConfigs.getByName("release")
+
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "cicdflow"
+            )
+
+            configure<CrashlyticsExtension> {
+                mappingFileUploadEnabled = true
+            }
+
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -88,4 +144,5 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.crashlytics)
 }
