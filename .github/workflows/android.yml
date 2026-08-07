@@ -2,13 +2,21 @@ name: Android learning CI/CD
 
 on:
   push:
+    # Test branch 5
     branches:
       - main
       - develop
       - 'qc/**'
+  pull_request:
+    branches:
+      - main
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -24,8 +32,23 @@ jobs:
           java-version: '17'
           cache: gradle
 
-      - name: Gant gradle permission
+      - name: Grant Gradle permission
         run: chmod +x gradlew
 
-      - name: Run ktLin
+      - name: Run ktlint
         run: ./gradlew ktlintCheck
+
+      - name: Run dev debug unit tests
+        run: ./gradlew :app:testDevDebugUnitTest
+
+      - name: Run prod debug unit tests
+        run: ./gradlew :app:testProdDebugUnitTest
+
+      - name: Build dev debug
+        run: ./gradlew :app:assembleDevDebug
+
+      - name: Build prod debug
+        run: ./gradlew :app:assembleProdDebug
+
+      - name: Build production release
+        run: ./gradlew :app:assembleProdRelease -PcrashlyticsMappingUploadEnabled=false

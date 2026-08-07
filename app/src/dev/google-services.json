@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "678894800789",
-    "project_id": "cicdflow-ae234",
-    "storage_bucket": "cicdflow-ae234.firebasestorage.app"
+    "project_number": "938371255725",
+    "project_id": "cicdflow-dev",
+    "storage_bucket": "cicdflow-dev.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:678894800789:android:92c1f9be92e649dd80b09c",
+        "mobilesdk_app_id": "1:938371255725:android:c6853c25f267d9476fa524",
         "android_client_info": {
-          "package_name": "com.example.cicdflow"
+          "package_name": "com.example.cicdflow.debug"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAlzBhxxUmTzV6Ku9LIAycrBICII8SPH20"
+          "current_key": "AIzaSyDBEfQQpTsF69qCLyYJ3Ns34CnV4dUguEY"
         }
       ],
       "services": {

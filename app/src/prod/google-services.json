@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "806587207439",
+    "project_id": "cicdflow-prod",
+    "storage_bucket": "cicdflow-prod.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806587207439:android:44c917175c6929b723b87a",
+        "android_client_info": {
+          "package_name": "com.example.cicdflow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3dnwy3QswXKCvq-1w3KMGgbck706Lmy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806587207439:android:3fb1e7779874f51223b87a",
+        "android_client_info": {
+          "package_name": "com.example.cicdflow.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3dnwy3QswXKCvq-1w3KMGgbck706Lmy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
