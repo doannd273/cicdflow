@@ -38,11 +38,17 @@ jobs:
       - name: Run ktlint
         run: ./gradlew ktlintCheck
 
-      - name: Run unit tests
-        run: ./gradlew test
+      - name: Run dev debug unit tests
+        run: ./gradlew :app:testDevDebugUnitTest
 
-      - name: Build debug variants
-        run: ./gradlew :app:assembleDevDebug :app:assembleProdDebug
+      - name: Run prod debug unit tests
+        run: ./gradlew :app:testProdDebugUnitTest
+
+      - name: Build dev debug
+        run: ./gradlew :app:assembleDevDebug
+
+      - name: Build prod debug
+        run: ./gradlew :app:assembleProdDebug
 
       - name: Build production release
         run: ./gradlew :app:assembleProdRelease -PcrashlyticsMappingUploadEnabled=false
