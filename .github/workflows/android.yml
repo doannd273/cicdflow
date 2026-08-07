@@ -32,14 +32,17 @@ jobs:
           java-version: '17'
           cache: gradle
 
-      - name: Gant gradle permission
+      - name: Grant Gradle permission
         run: chmod +x gradlew
 
-      - name: Run ktLin
+      - name: Run ktlint
         run: ./gradlew ktlintCheck
 
-      - name: Run test
+      - name: Run unit tests
         run: ./gradlew test
 
-      - name: Run test
-        run: ./gradlew assemble
+      - name: Build debug variants
+        run: ./gradlew :app:assembleDevDebug :app:assembleProdDebug
+
+      - name: Build production release
+        run: ./gradlew :app:assembleProdRelease -PcrashlyticsMappingUploadEnabled=false

@@ -9,6 +9,11 @@ val localProperties =
         }
     }
 
+val crashlyticsMappingUploadEnabled =
+    providers.gradleProperty("crashlyticsMappingUploadEnabled")
+        .map(String::toBoolean)
+        .orElse(true)
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -87,7 +92,7 @@ android {
             )
 
             configure<CrashlyticsExtension> {
-                mappingFileUploadEnabled = true
+                mappingFileUploadEnabled = crashlyticsMappingUploadEnabled.get()
             }
 
             proguardFiles(
