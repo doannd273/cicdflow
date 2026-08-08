@@ -31,19 +31,19 @@ pipeline {
 
         stage('Unit Test') {
             steps {
-                sh './gradlew testDebugUnitTest --stacktrace'
+                sh './gradlew :app:testDevDebugUnitTest :app:testProdDebugUnitTest --stacktrace'
             }
         }
 
         stage('Lint') {
             steps {
-                sh './gradlew lintDebug --stacktrace'
+                sh './gradlew :app:lintDevDebug :app:lintProdDebug --stacktrace'
             }
         }
 
         stage('Build Debug APK') {
             steps {
-                sh './gradlew assembleDebug --stacktrace'
+                sh './gradlew :app:assembleDevDebug :app:assembleProdDebug --stacktrace'
             }
         }
     }
